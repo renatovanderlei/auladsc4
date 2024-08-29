@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="jakarta.faces.html">
+
+<h:head>
+	<title>Página de Login</title>
+	<script>
+        function showModal() {
+            document.getElementById('dialogCadastro').style.display = 'block';
+        }
+
+        function hideModal() {
+            document.getElementById('dialogCadastro').style.display = 'none';
+        }
+    </script>
+</h:head>
+
+<h:body>
+	<!-- Mensagens de Feedback -->
+	<h:messages id="messages" showDetail="true" />
+
+	<!-- Formulário de Login -->
+	<h:form id="formLogin">
+		<h:panelGrid columns="2">
+			<h:outputLabel for="emailLogin" value="Email:" />
+			<h:inputText id="emailLogin" value="#{loginMB.email}" required="true" />
+
+			<h:outputLabel for="senhaLogin" value="Senha:" />
+			<h:inputSecret id="senhaLogin" value="#{loginMB.senha}"
+				required="true" />
+		</h:panelGrid>
+
+		<h:commandButton value="Login" action="#{loginMB.realizarLogin}"
+			update="messages" />
+	</h:form>
+
+	<!-- Link para abrir o Modal de Cadastro -->
+	<h:form>
+		<h:commandButton value="Registrar-se"
+			onclick="showModal(); return false;" />
+	</h:form>
+
+	<!-- Modal de Cadastro -->
+	<div id="dialogCadastro"
+		style="display: none; border: 1px solid #000; padding: 10px; width: 300px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff;">
+		<h:form id="formCadastro">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="nameCadastro" value="Nome:" />
+				<h:inputText id="nameCadastro" value="#{UserMB.User.nome}"
+					required="true" />
+
+				<h:outputLabel for="emailCadastro" value="Email:" />
+				<h:inputText id="emailCadastro" value="#{UserMB.User.email}"
+					required="true" />
+
+				<h:outputLabel for="passwordCadastro" value="Senha:" />
+				<h:inputSecret id="passwordCadastro"
+					value="#{UserMB.User.senha}" required="true" />
+
+				<h:outputLabel for="confirmPasswordCadastro" value="Confirmação:" />
+				<h:inputSecret id="confirmPasswordCadastro"
+					value="#{UserMB.confirmPassword}" required="true" />
+			</h:panelGrid>
+
+			<h:commandButton value="Cadastrar" action="#{UserMB.criarUser}"
+				update="messages" />
+			<h:commandButton value="Cancelar"
+				onclick="hideModal(); return false;" />
+		</h:form>
+	</div>
+</h:body>
+</html>

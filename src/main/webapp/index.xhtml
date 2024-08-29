@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="jakarta.faces.html">
+<h:head>
+ <title>Converter Graus - Stateless</title>
+</h:head>
+
+ <h:body>
+  <h:form>
+   <h:outputLabel value="Conversão de Graus utilizando um bean Stateless"/>
+   <hr/>
+   <h:outputLabel value="Grau em Celsius: "/>
+   <h:inputText value="#{grausMB.c}" ></h:inputText>
+   <h:commandButton action="#{grausMB.converterParaFahrenheit}" value="Converter"/><br/>
+   <h:outputLabel value="Em Fahrenheit: "/>
+   <h:outputText value="#{grausMB.resultadoF}"/>
+  </h:form>
+ </h:body>
+</html>

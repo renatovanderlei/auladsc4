@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core">
+<h:head>
+ <title>Adicionar Usuario</title>
+</h:head>
+
+ <h:body>
+  <h:form>
+   <h:outputLabel value="Adicionar Usuario"/>
+   <hr/>
+   <h:outputLabel value="Nome: "/>
+   <h:inputText value="#{usuarioMB.nome}" ></h:inputText>
+   <br/>
+   <h:outputLabel value="Idade: "/>
+   <h:inputText value="#{usuarioMB.idade}" ></h:inputText>
+   <br/>
+   <h:outputLabel value="CPF: "/>
+   <h:inputText value="#{usuarioMB.cpf}" ></h:inputText>
+   <br/>
+   <h:outputLabel value="matricula: "/>
+   <h:inputText value="#{usuarioMB.matricula}" ></h:inputText>
+   <br/>
+   <h:commandButton action="#{usuarioMB.salvarUsuarioAdmin}" value="Adicionar"/><br/>
+   
+  </h:form>
+  
+  <h:dataTable value = "#{usuarioMB.usuarios}" var = "usuario">
+   
+   <h:column>    				
+      <f:facet name = "header">Nome</f:facet>    				
+      #{usuario.nome}
+   </h:column>
+   
+   <h:column>
+      <f:facet name = "header">Idade</f:facet>
+      #{usuario.idade}
+   </h:column>
+   
+   <h:column>
+      <f:facet name = "header">CPF</f:facet>
+      #{usuario.cpf}
+   </h:column>
+  
+</h:dataTable>
+ </h:body>
+</html>
